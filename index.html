@@ -1,0 +1,127 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sci-High</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  
+  </style>
+</head>  
+  <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	<a href="#"><img src="logo.jpg" width="100" height="60"></a>
+      <a class="navbar-brand" href="#">Sci-High</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+	  
+	  <!--<li><a href="#"></a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>-->
+    </ul>
+	<ul class="nav navbar-nav navbar-right">
+      <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#myModal" data-toggle="modal" id="myBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div class="jumbotron">
+  <center>
+  <h1>Get Certified.Get Ahead</h1>
+  <h3><p>You can learn anything.</h3>
+  </center>
+</div>
+
+  
+  </body>
+  
+  <!-- Modal For Login -->
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="padding:35px 50px;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-lock"></span>Login</h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+       <form role="form" method="post" action="index2.html">
+            <div class="form-group">
+              <label for="u"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="u" name="u" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="p"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" id="p" name="p" placeholder="Enter password">
+            </div>
+			<div class="radio">
+				<label><input type="radio" name="optradio">Student</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="optradio">Tutor</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="optradio">Counselor</label>
+			</div>
+			<input type="submit" value="Login" name="login_btn" class="btn btn-success btn-block"> 
+
+		</form>		
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		<p><a href="#">Forgot Password?</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+    <!--Info-->
+	<section class="get-inspired people_grow">
+    <div class="container">
+	<center>
+        <h2 class="h2_style-book">Helping people grow their careers. <p>Every day!</h2>
+	<center>	<br><br><br><br>
+            <ul class="col-md-12">
+                <li class="col-md-4 list-group-item">
+                    <div class="descrip_inspired_outer">
+                        <div class="descrip_inspired">
+                            <img src="icon-training-dark.png" width="100" height="100"> 
+                            <h3 class="heading-label">Learn from the experts</h3>
+                            <p class="meta-text">Industry thought-leaders to help<br/> you master new skills</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 list-group-item">
+                    <div class="descrip_inspired_outer">
+                        <div class="descrip_inspired">
+							<img src="icon-career-growth.png" width="100" height="100">
+                            <h3 class="heading-label">Guaranteed career growth</h3>
+                            <p class="meta-text">Get a pay-raise, a promotion, or<br/>  start a new career</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 list-group-item">
+                    <div class="descrip_inspired_outer">
+                        <div class="descrip_inspired">
+                            <img src="Accreditation.png" width="200" height="100">
+                            <h3 class="heading-label">Accredited curriculum</h3>
+                            <p class="meta-text">Approved by 40+ global<br/>  accrediting bodies</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    </section>
+  
+  
+  </body>
+</html>
