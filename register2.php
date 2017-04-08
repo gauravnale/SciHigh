@@ -1,3 +1,9 @@
+
+<?php
+session_start();
+$_SESSION['variable']='2';
+echo $role;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +56,7 @@ body {
 	display: none;
 }
 <!--/*inputs*/-->
-#msform input, #msform textarea {
+#msform input, #msform textarea, #msform select {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -153,27 +159,38 @@ body {
 	</nav>
 	
 	<div class="jumbotron">
-        <h1>Register</h1>
+        <br><h1>Register</h1>
     </div>
 
 	<!-- multistep form -->
-	<form id="msform">
+	<form id="msform" name="registration_form2" method="post" action="register_user.php">
 		<!-- progressbar -->
 		<ul id="progressbar">
 			<li class="active">Account type</li>
 			<li class="active">Account Setup</li>
-			<li class="active">Profile</li>
+			<li>Profile</li>
 			<li>Personal Details</li>
 		</ul>
+		<!-- fieldsets -->
 		<fieldset>
-			<h2 class="fs-title">Profile</h2>
-			<h3 class="fs-subtitle">Your Social Identity</h3>
-			<input type="email" name="email" placeholder="Email Id" />
-			<input type="text" name="qualification" placeholder="Under-graduate/Graduate/Post-Graduate" />
-			<input type="text" name="skype" placeholder="Skype Id" />
-			<a href="reg.html" class="btn btn-success" role="button">Previous</a>
-			<a href="reg3.html" class="btn btn-success" role="button">Next</a>
-		</fieldset>		
+			<h2 class="fs-title">Create your account</h2>
+			<h3 class="fs-subtitle"></h3>
+			<input type="text" name="username" placeholder="Username"/>
+			<input type="password" name="pass" placeholder="Password" />
+			<input type="password" name="cpass" placeholder="Confirm Password" />
+			<select name="q">
+	        <option placeholder="Security Question"> - Security Question -</option>
+	        <option value="What was the name of your primary school?">What was the name of your primary school? </option>
+	        <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+	        <option value="What was the name of the place where you were born?">What was the name of the place where you were born?"</option>
+	        <option value="What is your mother's name?">What is your mother's name?</option>
+            </select>
+			<textarea rows="1" cols="15" name="sa" placeholder="Your Answer"></textarea>
+			<br>
+			<a href="register1.php" class="btn btn-success" role="button">Previous</a>
+			<input type="submit" name ="submit_btn2" value="next" class="btn btn-success" role="button"/>
+			
+		</fieldset>
 	<form>
 </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+require 'login.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,7 @@
 	<ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-			<span class="caret"></span> Hello,!</a>
+			<span class="caret"></span> Hello, <?php echo $user_data['fname'] ?>!</a>
 		<ul class="dropdown-menu">
           <li><a href="#">YOUR COURSES</a></li>
 		  <li><a href="#">LOGOUT</a></li>

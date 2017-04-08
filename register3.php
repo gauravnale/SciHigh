@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['variable']='3';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,28 +158,27 @@ body {
 	</nav>
 	
 	<div class="jumbotron">
-        <br><h1>Register</h1>
+        <h1>Register</h1>
     </div>
 
 	<!-- multistep form -->
-	<form id="msform">
+	<form id="msform" name="registration_form3" method="post" action="register_user.php">
 		<!-- progressbar -->
 		<ul id="progressbar">
 			<li class="active">Account type</li>
 			<li class="active">Account Setup</li>
-			<li>Profile</li>
+			<li class="active">Profile</li>
 			<li>Personal Details</li>
 		</ul>
-		<!-- fieldsets -->
 		<fieldset>
-			<h2 class="fs-title">Create your account</h2>
-			<h3 class="fs-subtitle"></h3>
-			<input type="text" name="username" placeholder="Username"/>
-			<input type="password" name="pass" placeholder="Password" />
-			<input type="password" name="cpass" placeholder="Confirm Password" />
-			<a href="register.html" class="btn btn-success" role="button">Previous</a>
-			<a href="reg2.html" class="btn btn-success" role="button">Next</a>
-		</fieldset>
+			<h2 class="fs-title">Profile</h2>
+			<h3 class="fs-subtitle">Your Social Identity</h3>
+			<input type="email" name="email" placeholder="Email Id" />
+			<input type="text" name="qualification" placeholder="Under-graduate/Graduate/Post-Graduate" />
+			<input type="text" name="skype" placeholder="Skype Id" />
+			<a href="register2.php" class="btn btn-success" role="button">Previous</a>
+			<input type="submit" name ="submit_btn3" value="next" class="btn btn-success" role="button">
+		</fieldset>		
 	<form>
 </body>
 </html>

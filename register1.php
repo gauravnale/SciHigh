@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['variable']='1';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +13,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script>
+  $(document).ready(function(){
+	 function saveData(){
+    var role=$('#r').val();
+    
+
+    $.aja({
+       type:"post",
+       url:"server1.php?p=add",
+       data:"nm="+name+"&em="+email+"&hp="+phone+"&al="+address,
+       success: function(msg){
+        alert('Success Insert data');
+       }
+    });
+
+  }  
+  });
+  </script>   
   <style>
   <!-- for radio button allignment-->
 label {
@@ -162,7 +183,7 @@ body {
     </div>
 
 	<!-- multistep form -->
-	<form id="msform">
+	<form id="msform" name="registration_form1" method="post" action="register_user.php">
 		<!-- progressbar -->
 		<ul id="progressbar">
 			<li class="active"> Account type</li>
@@ -174,21 +195,11 @@ body {
 		<fieldset>
 			<h2 class="fs-title">Select your role</h2>
 			<h3 class="fs-subtitle">This is step 1</h3>
-			<label for="radio_1">
-            <input type="radio" name="role" value="Student" id="radio_1" />
-            Student
-           </label>
-           <label for="radio_2">
-           <input type="radio" name="role" value="Tutor" id="radio_2" />
-            Tutor
-           </label>
-           <label for="radio_3">
-           <input type="radio" name="role" value="Counselor" id="radio_3" />
-           Counselor
-           </label>
+            <input type="radio" name="role" value="Student"  >Student
+           <input type="radio" name="role" value="Tutor"  > Tutor
+           <input type="radio" name="role" value="Counselor">Counselor
 		   <br>
-
-			<a href="reg.html" class="btn btn-success" role="button">Next</a>
+            <input type="submit" name ="submit_btn1" value="next" class="btn btn-success" role="button"/>
 		</fieldset>
 	<form>
 </body>

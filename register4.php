@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['variable']='4';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,6 +145,14 @@ body {
 }
 
   </style>
+  <script type="text/javascript">
+  submitForms = function(){
+    document.forms["form1"].submit();
+    document.forms["form2"].submit();
+	document.forms["form3"].submit();
+	document.forms["form4"].submit();
+}
+  </script>
 </head>
 
 <body>
@@ -157,7 +170,7 @@ body {
     </div>
 
 	<!-- multistep form -->
-	<form id="msform">
+	<form id="msform" name="registration_form4" method="post" action="register_user.php">
 		<!-- progressbar -->
 		<ul id="progressbar">
 			<li class="active">Account type</li>
@@ -174,9 +187,9 @@ body {
 			<input type="text" name="country" placeholder="country" />
 			<input type="text" name="city" placeholder="city" />
 			<input type="text" name="pincode" placeholder="pincode" />
-			<input type="text" name ="dob" placeholder="dd/mm/yyyy"/>
-			<a href="reg2.html" class="btn btn-success" role="button">Previous</a>
-			<a href="index2.html" class="btn btn-success" role="button">Next</a>
+			<input type="text" name ="age" placeholder="age"/>
+			<a href="register3.php" class="btn btn-success" role="button">Previous</a>
+			<input type="submit" name ="submit_btn4" value="submit" class="btn btn-success" role="button">
 		</fieldset>
 	<form>
 </body>
