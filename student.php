@@ -1,6 +1,18 @@
 <?php
 session_start();
 require 'login.php';
+$errors=array();
+// connection with database server
+$con= mysql_connect('localhost','root','');
+if(!$con){
+die('could not connect'.mysql_error());
+}
+
+
+//connection with database
+
+$selected = mysql_select_db("scihigh",$con);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,20 +33,13 @@ require 'login.php';
      <a href="#"><img src="logo.jpg" width="100" height="60"></a>
       <a class="navbar-brand" href="#">Sci-High</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#home">Home</a></li>
-      <li><a href="#">MOVIES</a></li>
-      <li><a href="#">TRAILERS & VIDEOS </a></li>
-	  <li><a href="#">ABOUT US</a></li>
-      <li><a href="#">CONTACT </a></li>
-    <ul>
 	<ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<span class="caret"></span> Hello, <?php echo $user_data['fname'] ?>!</a>
 		<ul class="dropdown-menu">
           <li><a href="#">YOUR COURSES</a></li>
-		  <li><a href="#">LOGOUT</a></li>
+		  <li><a href="logout.php">LOGOUT</a></li>
 		</ul>	
 	  </li>
       
@@ -46,8 +51,104 @@ require 'login.php';
         <img src="study.png" alt=" " width="350" height="220" class="pull-right"/>
         <h1>Take the world's best courses,<br>online</h1>
     </div>
-	
-	<!--First subject list-->
+	<div class="col-md-12">
+			<div class="col-md-5">
+		<br><br><br><br><br><br><br>
+			<button onclick="showcourse()" data-toggle="collapse" data-target="#view" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp &nbsp View Courses</button>
+			<div id="view" class="collapse">
+			<!--<form name="course_display">
+			<select name="course" onchange="showcourse(this.value)"> 
+       <option value="">select a course </option>
+     <?php
+         $dd_res=mysql_query("Select DISTINCT ID,name from course");
+         while($r=mysql_fetch_row($dd_res))
+         { 
+               echo "<option value='$r[0]'> $r[1] </option>";
+         }
+     ?>
+</select>-->
+<br> <br> <br> <br> <br>
+<br>
+<div id="txtHint">Course info will be listed here...</div>
+<script>
+function showcourse(str) {
+  var xhttp;    
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "student_coursedisplay.php?q="+str, true);
+  xhttp.send();
+}
+</script>
+</div>
+</div>
+<div class="col-md-7">
+<div class="col-md-3">
+		<br><br><br><br><br><br><br>
+		 <button data-toggle="collapse" data-target="#view1" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-collapse-down"></span> Enroll for a Course</button>
+			<div id="view1" class="collapse">
+			<form method="post" action="payment.php">
+
+				<p><h4>Please Enter course id</h4>
+				
+					<input type="text" name="sub_id" class="form-control" id="sub_name">
+				     <p><h4>Please Enter course name</h4>
+					<input type="text" name="sub_name" class="form-control" id="sub_id"><br>
+					<input type="submit" name="course_btn" value="proceed to payment" class="btn btn-primary btn-lg">
+					</form>
+<br> <br> <br> <br> <br>
+<br>
+</div>
+</div>&nbsp &nbsp
+&nbsp &nbsp &nbsp &nbsp
+<div class="col-md-4">
+		<br><br><br><br><br><br><br>
+		 <button data-toggle="collapse" data-target="#view2" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-collapse-down"></span> &nbsp &nbsp &nbsp Watch Tutorials!</button>
+			<div id="view2" class="collapse">
+			<form method="post" action="permission.php">
+
+				<select name="video_upload"> 
+              <option value="">select a course </option>
+          <?php
+           $dd_res=mysql_query("Select DISTINCT ID,name from course");
+         while($r=mysql_fetch_row($dd_res))
+         { 
+               echo "<option value='$r[0]'> $r[1] </option>";
+         }
+           ?>
+             </select><br><br><br><br><br><br>
+				     <p><h4>Please Enter password allocated</h4>
+					<input type="text" name="course_password" class="form-control" id="sub_id"><br>
+					<input type="submit" name="submit_btn" value="Proceed!" class="btn btn-primary btn-lg">
+					</form>
+</div>
+<!--script>
+function showcourse(str) {
+  var xhttp;    
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "student_coursedisplay.php?q="+str, true);
+  xhttp.send();
+}
+</script>
+</div>
+</div>
+	<!--First subject list
 	<section class="get-inspired people_grow">
     <div class="container">
 	<center>
@@ -100,7 +201,7 @@ require 'login.php';
 	
 	<br><br><br><br>
 	
-	<!--Second subject list-->
+	<!--Second subject list
 	<section class="get-inspired people_grow">
     <div class="container">
 	<center>
@@ -151,22 +252,26 @@ require 'login.php';
     </div>
     </section>
 	
-	<!--FOOTER-->
+	<!--FOOTER-
+	<br>	<br>	<br>	<br>	<br>	<br>	<br>	<br>	<br>	<br><br><br><br><br><br><br><br><br><br><br><br>
 <footer class="container-fluid bg-2 text-center" id="contact">
   <div>
   <b>
   <h4><p>&copy Sci-High</p>
   <p>Email Id:scihigh@gmail.com</p>
   <p>Mob No:97028 85311</p></h4>
-  <p><h1><a href="https://www.facebook.com/"<i class="fa fa-facebook logo-1"></a></i>
+  <p><h1><a href="https://www.facebook.com/"<i class="fa fa-facebook logo-1"></a></i><br>
   &nbsp <a href="https://www.linkedin.com/"<i class="fa fa-linkedin logo-1"></a></i>
   &nbsp <a href="https://twitter.com/"<i class="fa fa-twitter logo-1"></a></i></h1>
   </p>
   </b>
 </div>  
-</footer>
+</footer>-->
 
 
 	
+	
+	</div>
+	</div>
  </body>
  <html>

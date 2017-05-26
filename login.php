@@ -48,7 +48,7 @@ else
 	}
 	else if(find_role($uname)=='Tutor'){ 
 	 $_SESSION['ID']=$login;
-	 header("location: tutor.php");
+	 header("location: tutor1.php");
 	 exit();
 	}
 	else if(find_role($uname)=='Counselor'){ 

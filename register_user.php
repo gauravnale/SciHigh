@@ -14,7 +14,7 @@ else
 {
 echo "Server connection established";
 }
-echo $_SESSION['variable'];
+
 
 //connection with database
 
